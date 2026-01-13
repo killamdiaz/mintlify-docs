@@ -1,0 +1,165 @@
+---
+title: "Settings"
+description: "Manage your profile, workspace branding, and license settings. The Settings page is where you configure your Atlas Engine workspace identity, appearance, and licensing. It’s split into three tabs: •	General → profile + security preferences •	Branding → company name + logos + login UI styling •	License → apply/verify your enterprise license and view usage limits"
+---
+
+## General
+
+### **Profile**
+
+Use this section to maintain your basic profile details used across the product (display name, account identity).
+
+- Update the fields (First name / Last name)
+- Click **Save profile** to apply changes
+- Click **Reset** to discard edits before saving
+
+### **Account & Security**
+
+Manage login and notification preferences for your workspace account.
+
+**Email**
+
+- Shows the email tied to the currently signed-in user.
+
+**Password**
+
+- Use **Send reset** to trigger a password reset flow.
+
+**Notifications**
+
+- **Real-time alerts**: toggle instant notifications for important events.
+- **Daily summary**: toggle a digest-style summary that can be sent periodically.
+
+## Branding
+
+![Image](/images/image-24.png)
+
+Control how your organization appears across Atlas Engine — name, logos, favicon, and login screen styling.
+
+This is the tab you’ll use when you want Atlas Engine to look and feel like _your company’s workspace_.
+
+### **Company Identity**
+
+These fields define the organization identity shown across the UI and in outbound communications.
+
+- **Company Name**
+
+  The full organization name shown on primary surfaces (headers, settings, etc.).
+- **Short Name**
+
+  A compact version used in areas like **emails, alerts, and UI chips** where space is limited.
+
+✅ **Tip:** Keep _Short Name_ short (1–2 words). It’s what users will see most often in notifications.
+
+### **Logo & Icon**
+
+Upload branding assets used in navigation and browser-level identification.
+
+**Upload Logo (SVG preferred)**
+
+- Primary logo used in prominent UI locations.
+- SVG is recommended for crisp rendering at all sizes.
+
+**Upload Sidebar Logo**
+
+- The logo shown in the left navigation sidebar.
+- Useful if your sidebar needs a simplified mark (icon-only style).
+
+**Upload Favicon (ICO/PNG)**
+
+- The small icon shown in the browser tab.
+- Helps users identify Atlas Engine quickly when many tabs are open.
+
+**Preview**
+
+- Use the preview area to confirm the asset placement and how it looks on a dark UI background.
+
+**Show sidebar brand text**
+
+- When enabled, Atlas Engine can display your brand text alongside the sidebar icon/logo.
+
+➡️ When done, click **Save branding** to apply updates across the workspace.
+
+### **Login Page Branding**
+
+This section controls the **first impression** when users land on the sign-in screen.
+
+**Login Page Loge**
+
+- Upload the logo shown on the authentication page.
+
+**Login Accent Color**
+
+- Pick the accent color used for key UI highlights on the login screen.
+- Usually matches your brand primary color (hex value supported).
+
+**Background Style**
+
+- Choose the login background style (ex: Solid), depending on what your workspace theme requires.
+
+✅ **Tip:** Keep the accent color high-contrast so buttons and interactive elements remain clearly visible.
+
+## License
+
+![Image](/images/image-34.png)
+
+Apply and manage enterprise licensing, entitlements, and usage visibility.
+
+Use this tab when you:
+
+- need to **apply a new license**,
+- want to **confirm a license is active**, or
+- want to **check seats/tokens remaining**.
+
+### **License & Entitlements**
+
+This panel shows the currently applied license state for the workspace.
+
+**License key**
+
+- Displays the active key status (often read-only once applied).
+- The UI typically prevents editing an existing applied key to avoid accidental invalid licensing.
+
+**Customer**
+
+- The organization/customer mapped to the license.
+
+**Expiry**
+
+- When the license expires.
+- If expiry is missing or not loaded, the workspace may be running without a valid applied license.
+
+**Seats remaining**
+
+- Number of seats still available under the license.
+
+**Tokens**
+
+- Token capacity remaining and usage information (if enabled in your deployment).
+
+### **License actions (what each button does)**
+
+**Apply New License**
+
+- Use this to submit a new license key and activate it for the workspace.
+- After applying, the license key is generally **locked/read-only** (expected behavior).
+
+**Validate License**
+
+- Confirms whether the applied license is valid (signature/expiry/entitlements).
+- Use this if something looks wrong (ex: features disabled unexpectedly).
+
+**Refresh License**
+
+- Syncs latest license data from the backend (useful after changes or renewals).
+
+**Reload Status**
+
+- Refreshes the on-screen entitlement counters (seats/tokens) and status indicators.
+
+✅ **Troubleshooting tip:**
+
+If your license looks applied but usage numbers aren’t updating, try:
+
+1. **Refresh License**
+2. then **Reload Status**

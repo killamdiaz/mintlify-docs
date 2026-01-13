@@ -1,0 +1,107 @@
+---
+title: "Exhausts"
+description: "Real-time log streams for your agents and systems."
+---
+
+## Introduction
+
+Exhausts lets you create and manage real-time log streams that Atlas Engine can ingest and analyze. Use this to bring external logs (like Zscaler LSS) or custom JSON/NDJSON logs into your workspace for monitoring, debugging, and investigation.
+
+_The Exhausts dashboard lists all log streams along with their status and recent activity._
+
+![Image](/images/image-11.png)
+
+### **What you can do here**
+
+- Create a new log stream (Custom or Zscaler LSS)
+- Track stream connectivity (**Active / Waiting / Disconnected**)
+- View stream metadata (creator, last activity)
+- Link a stream to a support ticket for better traceability
+
+### **Streams table**
+
+The main table shows:
+
+- **Stream Name** — your identifier for the log stream
+- **Status** — stream health (Active / Waiting / Disconnected)
+- **Linked Ticket** — optional ticket associated with the stream
+- **Created By** — who created it
+- **Last Activity** — most recent ingestion timestamp
+- **Actions** — view/manage the stream
+
+**Empty state:** If no streams exist yet, you’ll see “No log streams yet — Create your first stream to get started.”
+
+### Create new log stream
+
+Click **Create New Log Stream** to open the stream setup dialog.
+
+![Image](/images/image-12.png)
+
+_Choose an exhaust type, name the stream, and optionally link it to a ticket._
+
+1. **Exhaust Type**
+
+   Choose one:
+   - **Custom Log Stream** — Generic **JSON/NDJSON ingestion** (best for internal services and custom pipelines)
+   - **Zscaler LSS** — Use **LSS URL + secret** configured in Zscaler Admin
+2. **Stream Name**
+
+   Enter a descriptive name (examples):
+   - prod-api-logs
+   - zscaler-firewall-lss
+   - agent-runtime-events
+3. **Link to Ticket (Optional)**
+
+   Attach a ticket to connect the log stream to an incident or work item.
+
+   ![Image](/images/image-13.png)
+
+   _Linking a ticket helps track ownership and troubleshooting context for the stream._
+
+### **Create Stream**
+
+Click **Create Stream** to register the stream. The stream will appear in the table and its status will update as ingestion starts.
+
+## **🔌 When a log stream is connected**
+
+![Image](/images/image-32.png)
+
+After you create a log stream and open it, Atlas Engine shows a **stream details** screen where you can connect your system and start pushing logs in real time.
+
+### **Stream status (top bar)**
+
+At the top you’ll see the stream status (example: **Waiting**).
+
+- **Waiting** means Atlas is ready, but no logs are being received yet.
+- Once logs start arriving, this view becomes the live feed for the stream.
+
+### **Stream URL**
+
+This is the ingestion endpoint for the stream.
+
+- Click **Copy** to copy the URL and share it with whoever is setting up the source.
+
+### **One-time token**
+
+A short-lived token used to authorize ingestion.
+
+- Click **Copy** to copy the token.
+- Treat this like a credential (don’t paste it in public places).
+
+### **CLI command (recommended setup)**
+
+Atlas provides a ready-to-run **CLI command** (example shown as a curl command) so you can start streaming logs immediately.
+
+- Click **Copy Command** to copy the full command at once.
+- The command includes:
+  - The **Stream URL**
+  - The **Authorization** header using the one-time token
+  - A payload example (e.g., log file / NDJSON body depending on your setup)
+
+### **Stream controls (top right)**
+
+- **Disconnect** — stops the stream from receiving new logs (useful for pausing ingestion).
+- **Chat** — opens a chat context tied to this stream (helpful for investigating what’s coming in).
+- **Delete** — permanently removes the stream (use when you no longer need it).
+
+> Tip: If the stream is stuck on **Waiting**, double-check that you’re using the correct Stream URL, the token hasn’t expired, and your source is actually sending events.

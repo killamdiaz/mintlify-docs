@@ -1,0 +1,61 @@
+---
+title: "Data Sources"
+description: "Connect the knowledge your agents need — websites, documents, and operational exhaust."
+---
+
+## Introduction
+
+The **Data Sources** page is where you bring external knowledge into Atlas Engine. Add a website to crawl, upload internal documents to index, and (soon) connect log/metric sources so agents can operate with real-time context.
+
+![Image](/images/image-14.png)
+
+## **Section 1: Knowledge Base Website Ingestion**
+
+**What it does**
+
+Use a documentation or wiki URL (e.g., a product docs site or internal KB) and Atlas Engine will crawl and ingest the content in the background.
+
+**How to use**
+
+- **Paste a base URL** (example: https://docs.yourcompany.com)
+- Click **Ingest** to start processing
+- Track progress under **Recent Ingestion Jobs**
+
+**What happens during ingestion**
+
+- Crawls linked pages under the base URL
+- Extracts and chunks content
+- Embeds and indexes pages for retrieval
+
+## **Section 2: Upload Documents (PDF / PPT / DOCX)**
+
+**What it does**
+
+Upload internal files (PDFs, slide decks, docs) to be processed and indexed by the ingestion pipeline.
+
+**How to use**
+
+- Click **Choose File**
+- Select a document from your machine
+- Atlas Engine ingests it and makes it available for agent retrieval
+
+**Best practices**
+
+- Prefer “final” docs over drafts
+- Use descriptive filenames for easier discovery
+
+## **Section 3: Exhaust Systems (Logs, Events, Metrics)**
+
+**What it does**
+
+Connect operational data sources so agents can reason over production signals (app logs, security events, telemetry).
+
+**Available connectors (coming soon)**
+
+- **Syslog Feed** — ingest logs from routers, firewalls, and core systems
+- **App Logs** — connect centralized logging platforms (e.g., ELK, Datadog, CloudWatch)
+- **Trace & Telemetry** — stream tracing/span data for deeper visibility
+
+> **Note:** These options may appear as “Coming Soon” depending on your deployment.
+
+Once ingested, these sources become part of the context Atlas Engine can retrieve from during agent runs and automations.

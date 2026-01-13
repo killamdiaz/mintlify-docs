@@ -1,0 +1,76 @@
+---
+title: "Integrations"
+description: "Connect external apps and identity providers to Atlas."
+---
+
+## Introduction
+
+The **Integrations** page is where you connect Atlas Engine to the tools your team already uses—identity providers for secure access, and external apps for workflows, data ingestion, and agent actions. Each tile shows the current connection status and a **Connect / Configure / Manage** action.
+
+![Image](/images/image-33.png)
+
+## **Section: Identity & Access**
+
+1. **Okta SAML SSO (NEW)**
+
+   Enable SAML 2.0 authentication via Okta for enterprise SSO.
+   - Click **Configure SAML** to begin setup
+   - Use this when your organization enforces centralized identity management
+2. **Atlas Account Login**
+
+   Standard login using Atlas’ identity provider.
+   - Click **Manage** to review or update login settings
+
+## **Section: Collaboration & Ticketing**
+
+1. **Slack Workspace**
+
+   Connect Slack to send automated messages, notifications, and agent logs.
+   - Click **Connect**
+   - Once connected, agents can post updates directly into channels
+2. **Jira Cloud**
+
+   Sync tickets, create tasks, and enrich Jira workflows inside Forge/Atlas workflows.
+   - Click **Connect**
+   - Useful for turning agent outputs into trackable work items
+3. **Confluence**
+
+   Allow Atlas Engine to index Confluence spaces and use them as reasoning context.
+   - Click **Connect**
+   - Best for internal documentation, runbooks, and team wikis
+
+## **Section: Developer Tools**
+
+1. **GitHub Repos**
+
+   Allow agents to read repositories, create PRs, and manage issues.
+   - Click **Connect**
+   - Useful for code review automation and engineering workflows
+
+## **Section: Knowledge & Content Platforms**
+
+1. **Google Drive**
+
+   Import docs, PDFs, and sheets—and allow agents to read or generate updates from Drive content.
+   - Click **Connect**
+   - Great for internal docs and shared knowledge bases
+2. **Notion (SOON)**
+
+   Sync Notion pages and databases for enriched agent context.
+
+   > This integration may show as **Coming Soon** depending on your deployment.
+
+## **Section: Custom & Workflow**
+
+1. **Custom API Connector**
+
+   Connect any external API to your agents and workflows.
+   - Click **Configure**
+   - Use this when you want Atlas to call internal tools or third-party services not listed above
+2. **Workflow Engine**
+
+   Create workflows, triggers, and sync flows across integrations.
+   - Click **Open**
+   - Use this as the control center for automation once integrations are connected
+
+Once integrations are connected, agents can use them as **tools** (actions) and **context** (knowledge) depending on the integration type.

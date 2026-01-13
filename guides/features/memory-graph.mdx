@@ -1,0 +1,108 @@
+---
+title: "Memory Graph"
+description: "A visual map of how documents, memories, and agents connect across Atlas."
+---
+
+## Introduction
+
+The Memory Graph gives you a high-level view of your workspace knowledge as a graph. As agents run and produce outputs, Atlas Engine creates nodes (documents, memories, agents) and connects them with relationships like derivations, updates, and similarity links.
+
+**Memory Graph view (empty state)** — When no agents have been run yet, the graph remains empty.
+
+![Image](/images/image-31.png)
+
+## **Empty state**
+
+**No memory nodes available yet**
+
+If you’re seeing this message, your workspace hasn’t generated any memory nodes yet. Run agents to populate the knowledge graph with documents and memories, and then revisit this page to explore connections.
+
+## **Time / snapshot selector**
+
+**Snapshot mode (Latest)**
+
+Use the selector at the top to switch which snapshot of the graph you’re viewing (for example, the most recent graph state vs. earlier snapshots, if available).
+
+## Legend
+
+The right-side **Legend** explains what each node, connection, and color represents.
+
+1. **Statistics**
+
+   A quick summary of what exists in the graph:
+   - **Memories** — total memory nodes created
+   - **Documents** — ingested or referenced documents
+   - **Agents** — agents that contributed to the graph
+   - **Connections** — edges between nodes
+2. **Nodes**
+
+   Node types you’ll see in the graph:
+   - **Document** — a source document in the workspace
+   - **Memory (STM)** — short-term memory (temporary/short-lived)
+   - **Memory (LTM)** — long-term memory (persistent knowledge)
+   - **Agent** — the agent that generated or contributed information
+3. **Status**
+
+   Memory lifecycle states:
+   - **New memory** — recently created
+   - **Expiring soon** — nearing its expiration window (if applicable)
+   - **Forgotten** — removed/expired memory
+4. **Connections**
+
+   How nodes are linked:
+   - **Doc → Memory** — a document produced or supported a memory
+   - **Doc similarity** — documents connected due to similarity
+   - **Shared memory links** — memories that share references/links
+5. **Relations**
+
+   Directional relationships between nodes:
+   - **Updates** — newer information updates an older node
+   - **Extends** — adds more context to an existing node
+   - **Derives** — created from another node
+   - **Shared pool** — shared workspace-level memory linkage
+6. **Similarity strength**
+
+   Indicates how strong similarity-based connections are:
+   - **Weak**
+   - **Strong**
+
+## **🔎 Search and jump to nodes**
+
+![Image](/images/image-30.png)
+
+Once your graph is populated, you can quickly find a specific node (document, memory, or agent) using the **search bar** at the top of the Memory Graph.
+
+### **Search bar (top)**
+
+- Start typing a keyword (example: AE) and Atlas Engine will show **matching nodes** in a dropdown list.
+- Results are labeled by **type** (for example, **DOCUMENT**) so you know what you’re jumping into.
+
+### **Results dropdown**
+
+Each result shows:
+
+- **Node name / identifier** (example: AE-1, AE-4, AE-5)
+- **Node type** (example: DOCUMENT)
+
+### **What happens when you select a result**
+
+When you click a result from the list:
+
+- The graph **focuses/centers** on that node
+- You can immediately see its **connections and relationships** in context (linked memories, similar docs, shared pools, etc.)
+
+### **Quick controls next to search**
+
+Near the search bar you also have graph controls (commonly used for):
+
+- **Zoom in / zoom out**
+- **Fit / focus view** (useful when the graph is dense)
+
+> Tip: Use search when the graph has thousands of nodes—it’s the fastest way to navigate without manually panning around.
+
+## **What to do next**
+
+To see the Memory Graph in action:
+
+1. Run an agent that reads or generates outputs from your workspace.
+2. Return to **Memory Graph** and explore newly created nodes and connections.

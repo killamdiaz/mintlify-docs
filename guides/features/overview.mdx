@@ -1,0 +1,52 @@
+---
+title: "Overview"
+description: "Monitor your AI workforce performance."
+---
+
+## Introduction
+
+The Overview page is your control center for quickly understanding how Atlas is performing. It summarizes token usage, agent activity, role distribution, and recent tasks so you can spot trends and issues at a glance.
+
+![Image](/images/image-9.png)
+
+## Key Sections
+
+1. **Tokens Used**
+
+   This card shows total **tokens consumed since runtime start**.
+
+   Use it to quickly understand overall usage and verify that tracking is active.
+   - **Since runtime start** → usage resets when the runtime/container restarts.
+   - **Tracking…** → indicates usage metrics are being collected.
+2. **Agent Activity**
+
+   **Tasks processed over the last 7 days** (visual chart).
+
+   This chart helps you see how busy your system has been recently and whether task volume is increasing or dropping.
+
+   Common use cases:
+   - Confirm agents are actually running tasks
+   - Identify spikes/drops in activity over time
+3. **Agent Roles**
+
+   **Distribution across your network** (visual chart).
+
+   This widget summarizes how your agent fleet is composed by role (for example: generalist vs specialized agents).
+
+   Use it to:
+   - Understand what kinds of agents you’re running most
+   - Spot imbalance (e.g., too many generalists, not enough specialized roles)
+4. **Recent Tasks**
+
+   A feed of your **latest agent activities**.
+
+   This section helps you quickly verify what was run most recently and acts as a lightweight “audit trail” of recent execution.
+
+## **Notes / empty states**
+
+If charts look blank or don’t load yet, it usually means either:
+
+- no agents/tasks have been run recently, or
+- metric tracking/visualization is still initializing in the current environment.
+
+Once agents start running and generating tasks, these graphs and the Recent Tasks list should populate automatically.

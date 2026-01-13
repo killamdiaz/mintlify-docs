@@ -1,0 +1,108 @@
+---
+title: "My Connectors"
+description: "Build, manage, and publish custom connectors for your Atlas agents."
+---
+
+## Introduction
+
+My Connectors is where you create and maintain connectors that let agents talk to external tools and APIs. You can build connectors manually or generate them via the AI Connector Generator, then test and publish them for use in workflows.
+
+![Image](/images/image-15.png)
+
+### **Connector views**
+
+- **Installed**: Connectors currently available for agents in your workspace.
+- **Drafts**: Work-in-progress connectors you’re still editing.
+- **Updates**: Published connectors that have newer versions available.
+
+### **Create a connector**
+
+- **AI Build**: Generate a connector from a plain English description (fastest path).
+- **Build Manually**: Start from scratch with full control over auth, actions, triggers, and transforms.
+
+## AI Connector Generator (Wizard)
+
+![Image](/images/image-16.png)
+
+### **Step 1: Describe your connector**
+
+- Write what you want the connector to do in **natural language** (e.g., “Create a ServiceNow connector that can create and fetch incidents”).
+- You can also choose from the **quick examples** shown to autofill a common use case.
+- Click **Generate** to continue.
+
+![Image](/images/image-17.png)
+
+### **Step 2: Review what Atlas detected**
+
+Atlas extracts structure from your description and displays a proposed connector blueprint:
+
+- **Platform detected**: The target system Atlas inferred (e.g., ServiceNow).
+- **Actions**: Operations your connector will support (e.g., Create Incident, Get Incident Details, Update Incident, Close Incident).
+- **Triggers**: Events that can start workflows (e.g., Incident Created, Incident Resolved).
+- This step is meant for **review + correction** before generating the final draft.
+
+Click **Create Draft** to continue.
+
+![Image](/images/image-19.png)
+
+### **Step 3: Confirm connector definition**
+
+This step shows two sides:
+
+- **AI Generated**: The connector name/description and the action list Atlas generated.
+- **Editable**: You can refine:
+  - **Name**
+  - **Description**
+  - (And any other editable fields available in your build)
+
+Click **Test Connector** to continue.
+
+![Image](/images/image-20.png)
+
+### **Step 4: Run quick validation tests**
+
+- Optionally enter an **API key/token** to test against real data.
+- Use **Run Tests** to validate your connector before publishing.
+- If credentials aren’t provided, testing may be limited depending on the connector type.
+
+Click **Finalize** to continue.
+
+![Image](/images/image-22.png)
+
+### **Step 5: Connector ready for review**
+
+- Atlas confirms the connector is generated and ready for final review.
+- You’ll see a quick artifact summary (example):
+  - **connector.json**
+  - **actions**
+  - **triggers**
+  - **transforms**
+- Click **Open in Builder** to view, edit, test, and publish.
+
+## Connector Builder (Editor)
+
+![Image](/images/image-23.png)
+
+1. **Builder layout**
+   - **Left sidebar (Files)**: Your connector is structured into folders:
+     - **Metadata** → connector.json (high-level connector definition)
+     - **Auth** → auth configuration (e.g., OAuth2 settings)
+     - **Actions** → one file per action (create/get/update/etc.)
+     - **Triggers** → event definitions
+     - **Transforms** → request/response transformation logic
+   - **Main editor**: View and edit the currently selected file (JSON/scripts).
+2. **Testing inside the builder**
+   - The **Test Runner** shows results per step (pass/fail) for:
+     - Auth flow validation (example shown: OAuth2 Token Exchange)
+     - Each action test (example shown: Create Incident / Get Incident)
+   - Use the right-side tabs to inspect:
+     - **Console**
+     - **Request**
+     - **Response**
+
+       This helps debug failures quickly (e.g., invalid ID, missing permissions, wrong endpoint).
+3. **Top actions**
+   - **Save Draft**: Save current progress without publishing.
+   - **Test**: Run connector tests from within the builder.
+   - **Export ZIP**: Download the connector bundle for sharing or backup.
+   - **Publish**: Make the connector available for agents and workflows.

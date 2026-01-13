@@ -1,0 +1,70 @@
+---
+title: "Agent Network"
+description: "Design, connect, and manage agents as reusable automations."
+---
+
+![Image](/images/image-28.png)
+
+## Overview
+
+The Agent Network is Atlas Engine’s visual workspace for building agent-based automations. You can create agents, wire them together, and iterate on workflows in a single canvas—then save and reuse them as “Automations”.
+
+### **What you’re seeing on this page**
+
+- **Canvas (grid workspace):** The main area where your agents and connections live.
+- **Automation header:** Shows the current automation name and save status (e.g., _Saved_).
+- **New Agent button (top-right):** Create a new agent and add it to your automation.
+- **Zoom controls (left):** Zoom in/out and adjust your canvas view while building.
+
+![Image](/images/image-4.png)
+
+Use the Automation panel to manage the overall workflow container.
+
+- **Load existing:** Switch between saved automations or start a new one.
+- **Name:** Rename your automation to something meaningful (e.g., “Daily Support Triage”).
+- **Description:** Add high-level context so teammates understand the purpose quickly.
+- **Blueprint snapshot:** Quick stats like agents mapped and saved/live connections.
+- **Actions:**
+  - **Save** to persist the automation
+  - **New** to start fresh
+  - **Delete** to remove an automation you no longer need
+
+## Create a new agent
+
+Agents are the building blocks of your workflow. You can generate an agent from plain English or configure one manually with more control.
+
+You’ll see two creation modes:
+
+- **Natural language:** Describe what you want, and Atlas generates an agent for you.
+
+  ![Image](/images/image-5.png)
+
+  **Describe your agent** in one or two sentences—what it should do, what it should watch for, and what output you expect.
+
+  Example prompts:
+  - “Monitor new GitHub issues and summarize them daily.”
+  - “Triages support tickets and assigns priority based on keywords.”
+
+  Optional:
+  - **Launch sandbox after creation:** Start an interactive environment right after generating the agent.
+- **Manual setup:** Configure agent details and behavior explicitly.
+
+  ![Image](/images/image-7.png)
+
+  Use Manual setup when you want tighter control over agent behavior and inputs.
+
+  Fill in:
+  - **Agent name:** A clear label (e.g., “Ticket Triage Agent”).
+  - **Role & instructions:** What the agent is responsible for and how it should behave.
+  - **Objectives:** One goal per line (keeps behavior focused and testable).
+  - **Tools:** Comma-separated list of tools the agent can use (e.g., Slack, Notion).
+  - **Memory context:** Optional background/state the agent should always remember.
+
+  Optional:
+  - **Autonomous internet access:** Enable only when the agent needs browsing/summarization via the secure proxy.
+
+## Tips / Best practices
+
+- **Start simple:** Create one agent first, then expand into a multi-agent automation.
+- **Name everything:** Clear automation + agent names make debugging much easier later.
+- **Write objectives like checklists:** Short, specific goals produce more reliable behavior

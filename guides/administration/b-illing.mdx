@@ -1,0 +1,91 @@
+---
+title: "BIlling & Usage"
+description: "The Billing & Usage page gives you a clear view of token usage, cost, and where spend is coming from across your Atlas workspace. Use it to monitor consumption, spot spikes early, and understand which agents/connectors/providers are driving usage."
+---
+
+![Image](/images/image-35.png)
+
+### **Time window filters**
+
+In the top-right, choose a timeframe to view usage trends:
+
+- **24h** — recent activity (great for debugging spikes)
+- **7d** — week-over-week visibility
+- **30d** — month-level trend (most common)
+- **All** — long-term history (if available)
+
+Changing the window updates all charts and breakdowns on the page.
+
+## **Subscription**
+
+### **Subscription card**
+
+The **Subscription** section is where you manage your plan and billing settings.
+
+- **View Plans** — compare plans and limits
+- **Upgrade** — move to a higher tier when you need more capacity
+
+This area is focused on plan management; usage insights are shown below.
+
+## **Usage summary cards**
+
+These top cards give a fast “health check” of your usage:
+
+### **Today’s Tokens**
+
+Shows tokens consumed **within the selected rolling window** (depending on the filter/timeframe).
+
+Use it to quickly confirm whether the system is actively consuming tokens right now.
+
+### **This Month**
+
+Shows total tokens used **within the selected timeframe window** (ex: last 30 days).
+
+Helpful for checking if you’re trending toward your expected monthly budget.
+
+### **Total Cost**
+
+Shows estimated cost for the same window, based on your pricing configuration.
+
+Use it to understand spend at a glance before drilling into breakdowns.
+
+> Note: Values shown are examples—your workspace will reflect your real usage.
+
+## **Daily Tokens**
+
+The **Daily Tokens** chart breaks down token consumption **per day** in the selected timeframe.
+
+- Helps you identify usage spikes (e.g., a large agent run or ingestion job)
+- Useful for correlating usage with deployments, incidents, or scheduled automations
+
+Tip: If one day is unusually high, check **Top Agents** and **Connector Breakdown** next.
+
+## **Provider Breakdown**
+
+Shows usage grouped by **model/provider** (for example: OpenAI, Anthropic, etc., depending on what your workspace uses).
+
+- Helps validate which provider is being used most
+- Useful for cost governance and provider strategy decisions
+
+## **Connector Breakdown**
+
+Shows token usage grouped by **source/connector workflow**, such as:
+
+- Crawlers / website ingestion
+- Document ingestion
+- Custom connectors (if enabled)
+
+This is the fastest way to answer: **“Where is usage coming from?”**
+
+## **Top Agents**
+
+Lists the agents consuming the most tokens in the selected timeframe.
+
+- Great for identifying heavy agents that need optimization
+- Useful for auditing “always-on” agents or agents running too frequently
+
+### **How to use this page effectively**
+
+- **Spending higher than expected?** Start with **Total Cost → Daily Tokens → Top Agents**
+- **Unexpected spike today?** Check **Today’s Tokens** then drill into **Connector Breakdown**
+- **Budget planning?** Use **30d** or **All** and watch trends in **Daily Tokens**

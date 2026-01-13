@@ -1,0 +1,6129 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Atlas Engine API",
+    "version": "0.1.0",
+    "description": "Generated from Express routes. Schemas may be refined over time.",
+    "license": {
+      "name": "Proprietary",
+      "url": "https://atlasengine.ai/legal"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.atlasengine.ai",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/healthz": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [],
+        "summary": "List Healthz",
+        "operationId": "get_healthz",
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/metrics": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Metrics",
+        "operationId": "get_metrics",
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/api/license/status": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-license-key",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [],
+        "summary": "List Status",
+        "operationId": "get_api_license_status",
+        "tags": [
+          "License"
+        ]
+      }
+    },
+    "/api/license/validate": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "x-license-key",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [],
+        "summary": "Create Validate",
+        "operationId": "post_api_license_validate",
+        "tags": [
+          "License"
+        ]
+      }
+    },
+    "/api/license/refresh": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "x-license-key",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [],
+        "summary": "Create Refresh",
+        "operationId": "post_api_license_refresh",
+        "tags": [
+          "License"
+        ]
+      }
+    },
+    "/api/license/apply": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true,
+                "description": "Request body schema was auto-normalized (original generator produced invalid field names)."
+              }
+            }
+          }
+        },
+        "security": [],
+        "summary": "Create Apply",
+        "operationId": "post_api_license_apply",
+        "tags": [
+          "License"
+        ]
+      }
+    },
+    "/api/deployment/version": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Version",
+        "operationId": "get_api_deployment_version",
+        "tags": [
+          "Deployment"
+        ]
+      }
+    },
+    "/.well-known/saml/metadata/{orgId}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "summary": "Get Metadata",
+        "operationId": "get__well_known_saml_metadata_orgid",
+        "tags": [
+          "Auth (SAML)"
+        ]
+      }
+    },
+    "/auth/saml/config/{orgId}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [],
+        "summary": "Get Config",
+        "operationId": "get_auth_saml_config_orgid",
+        "tags": [
+          "Auth (SAML)"
+        ]
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "domains": {
+                    "example": "any"
+                  },
+                  "idp_metadata_url": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "summary": "Update Config",
+        "operationId": "put_auth_saml_config_orgid",
+        "tags": [
+          "Auth (SAML)"
+        ]
+      }
+    },
+    "/auth/saml/discover": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [],
+        "summary": "List Discover",
+        "operationId": "get_auth_saml_discover",
+        "tags": [
+          "Auth (SAML)"
+        ]
+      }
+    },
+    "/auth/saml/login": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "host",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "redirect",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "org_id": {
+                    "example": "any"
+                  },
+                  "orgId": {
+                    "example": "any"
+                  },
+                  "email": {
+                    "example": "any"
+                  },
+                  "redirect": {
+                    "example": "any"
+                  },
+                  "relayState": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "summary": "Create Login",
+        "operationId": "post_auth_saml_login",
+        "tags": [
+          "Auth (SAML)"
+        ]
+      }
+    },
+    "/auth/saml/acs": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SAMLResponse": {
+                    "example": "any"
+                  },
+                  "RelayState": {
+                    "example": "any"
+                  },
+                  "org_id": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "summary": "Create Acs",
+        "operationId": "post_auth_saml_acs",
+        "tags": [
+          "Auth (SAML)"
+        ]
+      }
+    },
+    "/auth/saml/idp-init": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SAMLResponse": {
+                    "example": "any"
+                  },
+                  "RelayState": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "summary": "Create Idp Init",
+        "operationId": "post_auth_saml_idp_init",
+        "tags": [
+          "Auth (SAML)"
+        ]
+      }
+    },
+    "/auth/saml/logout": {
+      "post": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [],
+        "summary": "Create Logout",
+        "operationId": "post_auth_saml_logout",
+        "tags": [
+          "Auth (SAML)"
+        ]
+      }
+    },
+    "/auth/saml/slo": {
+      "post": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [],
+        "summary": "Create Slo",
+        "operationId": "post_auth_saml_slo",
+        "tags": [
+          "Auth (SAML)"
+        ]
+      }
+    },
+    "/auth/saml/session": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cookie",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [],
+        "summary": "List Session",
+        "operationId": "get_auth_saml_session",
+        "tags": [
+          "Auth (SAML)"
+        ]
+      }
+    },
+    "/agents": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Agents",
+        "operationId": "post_agents",
+        "tags": [
+          "Agents"
+        ]
+      },
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Agents",
+        "operationId": "get_agents",
+        "tags": [
+          "Agents"
+        ]
+      }
+    },
+    "/agents/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Get Agents",
+        "operationId": "get_agents_id",
+        "tags": [
+          "Agents"
+        ]
+      },
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Update Agents",
+        "operationId": "patch_agents_id",
+        "tags": [
+          "Agents"
+        ]
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Delete Agents",
+        "operationId": "delete_agents_id",
+        "tags": [
+          "Agents"
+        ]
+      }
+    },
+    "/agents/{id}/task": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Task",
+        "operationId": "post_agents_id_task",
+        "tags": [
+          "Agents"
+        ]
+      }
+    },
+    "/agents/{id}/memory": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Get Memory",
+        "operationId": "get_agents_id_memory",
+        "tags": [
+          "Agents"
+        ]
+      }
+    },
+    "/agents/{id}/status": {
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Update Status",
+        "operationId": "patch_agents_id_status",
+        "tags": [
+          "Agents"
+        ]
+      }
+    },
+    "/tasks": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Tasks",
+        "operationId": "get_tasks",
+        "tags": [
+          "Tasks"
+        ]
+      }
+    },
+    "/tasks/{taskId}/stream": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Get Stream",
+        "operationId": "get_tasks_taskid_stream",
+        "tags": [
+          "Tasks"
+        ]
+      }
+    },
+    "/tasks/assign": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Assign",
+        "operationId": "post_tasks_assign",
+        "tags": [
+          "Tasks"
+        ]
+      }
+    },
+    "/commands": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "org_id": {
+                    "example": "any"
+                  },
+                  "account_id": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Commands",
+        "operationId": "post_commands",
+        "tags": [
+          "Commands"
+        ]
+      }
+    },
+    "/agent-builder": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Agent Builder",
+        "operationId": "post_agent_builder",
+        "tags": [
+          "Agent Builder"
+        ]
+      }
+    },
+    "/agent-builder/spec": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Spec",
+        "operationId": "post_agent_builder_spec",
+        "tags": [
+          "Agent Builder"
+        ]
+      }
+    },
+    "/agent-config/schema": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Schema",
+        "operationId": "post_agent_config_schema",
+        "tags": [
+          "Agent Config"
+        ]
+      }
+    },
+    "/agent-config/{agentId}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "agentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Get Agent Config",
+        "operationId": "get_agent_config_agentid",
+        "tags": [
+          "Agent Config"
+        ]
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "agentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Update Agent Config",
+        "operationId": "put_agent_config_agentid",
+        "tags": [
+          "Agent Config"
+        ]
+      }
+    },
+    "/insights/overview": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Overview",
+        "operationId": "get_insights_overview",
+        "tags": [
+          "Insights"
+        ]
+      }
+    },
+    "/memory/graph": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Graph",
+        "operationId": "get_memory_graph",
+        "tags": [
+          "Memory"
+        ]
+      }
+    },
+    "/memory/stream": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Stream",
+        "operationId": "get_memory_stream",
+        "tags": [
+          "Memory"
+        ]
+      }
+    },
+    "/meta-controller/approvals": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Approvals",
+        "operationId": "get_meta_controller_approvals",
+        "tags": [
+          "Meta Controller"
+        ]
+      }
+    },
+    "/meta-controller/approvals/{id}/resolve": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Resolve",
+        "operationId": "post_meta_controller_approvals_id_resolve",
+        "tags": [
+          "Meta Controller"
+        ]
+      }
+    },
+    "/meta-controller/events": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Events",
+        "operationId": "get_meta_controller_events",
+        "tags": [
+          "Meta Controller"
+        ]
+      }
+    },
+    "/meta-controller/conversation-graph": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Conversation Graph",
+        "operationId": "get_meta_controller_conversation_graph",
+        "tags": [
+          "Meta Controller"
+        ]
+      }
+    },
+    "/multi-agent/sessions": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Sessions",
+        "operationId": "post_multi_agent_sessions",
+        "tags": [
+          "Multi-Agent"
+        ]
+      }
+    },
+    "/multi-agent/sessions/stream": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "prompt",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Stream",
+        "operationId": "get_multi_agent_sessions_stream",
+        "tags": [
+          "Multi-Agent"
+        ]
+      }
+    },
+    "/multi-agent/tool-agents/run": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "503": {
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Run",
+        "operationId": "post_multi_agent_tool_agents_run",
+        "tags": [
+          "Multi-Agent"
+        ]
+      }
+    },
+    "/multi-agent/memory": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Memory",
+        "operationId": "get_multi_agent_memory",
+        "tags": [
+          "Multi-Agent"
+        ]
+      }
+    },
+    "/multi-agent/events": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Events",
+        "operationId": "get_multi_agent_events",
+        "tags": [
+          "Multi-Agent"
+        ]
+      }
+    },
+    "/multi-agent/tool-agents": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Tool Agents",
+        "operationId": "get_multi_agent_tool_agents",
+        "tags": [
+          "Multi-Agent"
+        ]
+      }
+    },
+    "/multi-agent/tool-agents/{agentId}/logs": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "agentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Get Logs",
+        "operationId": "get_multi_agent_tool_agents_agentid_logs",
+        "tags": [
+          "Multi-Agent"
+        ]
+      }
+    },
+    "/chat/history/{conversationId}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "conversationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Get History",
+        "operationId": "get_chat_history_conversationid",
+        "tags": [
+          "Chat"
+        ]
+      }
+    },
+    "/chat/send": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "example": "any"
+                  },
+                  "conversationId": {
+                    "example": "any"
+                  },
+                  "history": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Send",
+        "operationId": "post_chat_send",
+        "tags": [
+          "Chat"
+        ]
+      }
+    },
+    "/automations": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Automations",
+        "operationId": "get_automations",
+        "tags": [
+          "Automations"
+        ]
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Automations",
+        "operationId": "post_automations",
+        "tags": [
+          "Automations"
+        ]
+      }
+    },
+    "/automations/{automationId}": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "automationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Update Automations",
+        "operationId": "put_automations_automationid",
+        "tags": [
+          "Automations"
+        ]
+      }
+    },
+    "/automation-builder/interpret": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Interpret",
+        "operationId": "post_automation_builder_interpret",
+        "tags": [
+          "Automation Builder"
+        ]
+      }
+    },
+    "/automation-builder/message": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Message",
+        "operationId": "post_automation_builder_message",
+        "tags": [
+          "Automation Builder"
+        ]
+      }
+    },
+    "/automation-builder/key": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Key",
+        "operationId": "post_automation_builder_key",
+        "tags": [
+          "Automation Builder"
+        ]
+      }
+    },
+    "/automation-builder/events": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sessionId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Events",
+        "operationId": "get_automation_builder_events",
+        "tags": [
+          "Automation Builder"
+        ]
+      }
+    },
+    "/automation-builder/session/{sessionId}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Delete Session",
+        "operationId": "delete_automation_builder_session_sessionid",
+        "tags": [
+          "Automation Builder"
+        ]
+      }
+    },
+    "/connectors/install": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "connectorId": {
+                    "example": "any"
+                  },
+                  "tenantId": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Install",
+        "operationId": "post_connectors_install",
+        "tags": [
+          "Connectors"
+        ]
+      }
+    },
+    "/connectors/draft": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tenantId": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Draft",
+        "operationId": "post_connectors_draft",
+        "tags": [
+          "Connectors"
+        ]
+      }
+    },
+    "/connectors/publish": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tenantId": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Publish",
+        "operationId": "post_connectors_publish",
+        "tags": [
+          "Connectors"
+        ]
+      }
+    },
+    "/connectors/installed": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Installed",
+        "operationId": "get_connectors_installed",
+        "tags": [
+          "Connectors"
+        ]
+      }
+    },
+    "/connectors/drafts": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Drafts",
+        "operationId": "get_connectors_drafts",
+        "tags": [
+          "Connectors"
+        ]
+      }
+    },
+    "/connectors/run": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "transformName": {
+                    "example": "any"
+                  },
+                  "connectorId": {
+                    "example": "any"
+                  },
+                  "action": {
+                    "example": "any"
+                  },
+                  "input": {
+                    "example": "any"
+                  },
+                  "authKey": {
+                    "example": "any"
+                  },
+                  "tenantId": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Run",
+        "operationId": "post_connectors_run",
+        "tags": [
+          "Connectors"
+        ]
+      }
+    },
+    "/connectors/test": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "connectorId": {
+                    "example": "any"
+                  },
+                  "authKey": {
+                    "example": "any"
+                  },
+                  "tenantId": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Test",
+        "operationId": "post_connectors_test",
+        "tags": [
+          "Connectors"
+        ]
+      }
+    },
+    "/connectors/secrets": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "connectorId": {
+                    "example": "any"
+                  },
+                  "key": {
+                    "example": "any"
+                  },
+                  "value": {
+                    "example": "any"
+                  },
+                  "tenantId": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Secrets",
+        "operationId": "post_connectors_secrets",
+        "tags": [
+          "Connectors"
+        ]
+      }
+    },
+    "/ai/generate-connector": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tenantId": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Generate Connector",
+        "operationId": "post_ai_generate_connector",
+        "tags": [
+          "AI"
+        ]
+      }
+    },
+    "/usage/summary": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Summary",
+        "operationId": "get_usage_summary",
+        "tags": [
+          "Usage"
+        ]
+      }
+    },
+    "/usage/daily": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Daily",
+        "operationId": "get_usage_daily",
+        "tags": [
+          "Usage"
+        ]
+      }
+    },
+    "/usage/monthly": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Monthly",
+        "operationId": "get_usage_monthly",
+        "tags": [
+          "Usage"
+        ]
+      }
+    },
+    "/usage/breakdown": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Breakdown",
+        "operationId": "get_usage_breakdown",
+        "tags": [
+          "Usage"
+        ]
+      }
+    },
+    "/usage/models": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Models",
+        "operationId": "get_usage_models",
+        "tags": [
+          "Usage"
+        ]
+      }
+    },
+    "/usage/agents": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Agents",
+        "operationId": "get_usage_agents",
+        "tags": [
+          "Usage"
+        ]
+      }
+    },
+    "/ingestion/jobs": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "org_id": {
+                    "example": "any"
+                  },
+                  "source": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AtlasSecretHeader": []
+          }
+        ],
+        "summary": "Create Jobs",
+        "operationId": "post_ingestion_jobs",
+        "tags": [
+          "Ingestion"
+        ]
+      },
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "AtlasSecretHeader": []
+          }
+        ],
+        "summary": "List Jobs",
+        "operationId": "get_ingestion_jobs",
+        "tags": [
+          "Ingestion"
+        ]
+      }
+    },
+    "/ingestion/jobs/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "AtlasSecretHeader": []
+          }
+        ],
+        "summary": "Delete Jobs",
+        "operationId": "delete_ingestion_jobs_id",
+        "tags": [
+          "Ingestion"
+        ]
+      }
+    },
+    "/ingestion/search": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "AtlasSecretHeader": []
+          }
+        ],
+        "summary": "List Search",
+        "operationId": "get_ingestion_search",
+        "tags": [
+          "Ingestion"
+        ]
+      }
+    },
+    "/workflows/compile": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Compile",
+        "operationId": "post_workflows_compile",
+        "tags": [
+          "Workflows"
+        ]
+      }
+    },
+    "/workflows": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Workflows",
+        "operationId": "get_workflows",
+        "tags": [
+          "Workflows"
+        ]
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Workflows",
+        "operationId": "post_workflows",
+        "tags": [
+          "Workflows"
+        ]
+      }
+    },
+    "/workflows/{workflowId}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "workflowId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Get Workflows",
+        "operationId": "get_workflows_workflowid",
+        "tags": [
+          "Workflows"
+        ]
+      }
+    },
+    "/workflows/{workflowId}/run": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "workflowId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Create Run",
+        "operationId": "post_workflows_workflowid_run",
+        "tags": [
+          "Workflows"
+        ]
+      }
+    },
+    "/branding": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "List Branding",
+        "operationId": "get_branding",
+        "tags": [
+          "Branding"
+        ]
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "companyName": {
+                    "example": "any"
+                  },
+                  "shortName": {
+                    "example": "any"
+                  },
+                  "logoData": {
+                    "example": "any"
+                  },
+                  "sidebarLogoData": {
+                    "example": "any"
+                  },
+                  "faviconData": {
+                    "example": "any"
+                  },
+                  "loginLogoData": {
+                    "example": "any"
+                  },
+                  "showSidebarText": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OrgIdHeader": [],
+            "LicenseKeyHeader": []
+          }
+        ],
+        "summary": "Update Branding",
+        "operationId": "put_branding",
+        "tags": [
+          "Branding"
+        ]
+      }
+    },
+    "/oauth/jira/install": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "List Install",
+        "operationId": "get_oauth_jira_install",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/callback": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "List Callback",
+        "operationId": "get_oauth_jira_callback",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/refresh": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "Create Refresh",
+        "operationId": "post_oauth_jira_refresh",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/disconnect": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "Create Disconnect",
+        "operationId": "post_oauth_jira_disconnect",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/status": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [],
+        "summary": "List Status",
+        "operationId": "get_oauth_jira_status",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/projects": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "List Projects",
+        "operationId": "get_oauth_jira_projects",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/projects/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "Get Projects",
+        "operationId": "get_oauth_jira_projects_id",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/issues/assigned": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "List Assigned",
+        "operationId": "get_oauth_jira_issues_assigned",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/issues/search": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "Create Search",
+        "operationId": "post_oauth_jira_issues_search",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/issues/similar": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "projectKey": {
+                    "example": "any"
+                  },
+                  "summary": {
+                    "example": "any"
+                  },
+                  "description": {
+                    "example": "any"
+                  },
+                  "limit": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "summary": "Create Similar",
+        "operationId": "post_oauth_jira_issues_similar",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/issues/{key}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "Get Issues",
+        "operationId": "get_oauth_jira_issues_key",
+        "tags": [
+          "Jira OAuth"
+        ]
+      },
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "Update Issues",
+        "operationId": "patch_oauth_jira_issues_key",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/issues/ingest": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fields": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "summary": "Create Ingest",
+        "operationId": "post_oauth_jira_issues_ingest",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/issues": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "Create Issues",
+        "operationId": "post_oauth_jira_issues",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/issues/{key}/comment": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "Create Comment",
+        "operationId": "post_oauth_jira_issues_key_comment",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/issues/{key}/attachments": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "summary": "Create Attachments",
+        "operationId": "post_oauth_jira_issues_key_attachments",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/issues/{key}/transition": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "Create Transition",
+        "operationId": "post_oauth_jira_issues_key_transition",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/issues/{key}/transitions": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "Get Transitions",
+        "operationId": "get_oauth_jira_issues_key_transitions",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/jira/webhook": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "Create Webhook",
+        "operationId": "post_oauth_jira_webhook",
+        "tags": [
+          "Jira OAuth"
+        ]
+      }
+    },
+    "/oauth/github/user": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [],
+        "summary": "List User",
+        "operationId": "get_oauth_github_user",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github/user/repos": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [],
+        "summary": "List Repos",
+        "operationId": "get_oauth_github_user_repos",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github/graphql": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [],
+        "summary": "Create Graphql",
+        "operationId": "post_oauth_github_graphql",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github/repos/{owner}/{repo}/readme": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "owner",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "repo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [],
+        "summary": "Get Readme",
+        "operationId": "get_oauth_github_repos_owner_repo_readme",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github/repos/{owner}/{repo}/contents": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "owner",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "repo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [],
+        "summary": "Get Contents",
+        "operationId": "get_oauth_github_repos_owner_repo_contents",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github/repos/{owner}/{repo}/git/trees/{ref}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "owner",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "repo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ref",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [],
+        "summary": "Get Trees",
+        "operationId": "get_oauth_github_repos_owner_repo_git_trees_ref",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github/repos/{owner}/{repo}/contents/{path}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "owner",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "repo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [],
+        "summary": "Get Contents",
+        "operationId": "get_oauth_github_repos_owner_repo_contents_path",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [],
+        "summary": "List Github",
+        "operationId": "get_oauth_github",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github/install": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [],
+        "summary": "List Install",
+        "operationId": "get_oauth_github_install",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github/callback": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [],
+        "summary": "List Callback",
+        "operationId": "get_oauth_github_callback",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github/contributions": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "List Contributions",
+        "operationId": "get_oauth_github_contributions",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github/status": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [],
+        "summary": "List Status",
+        "operationId": "get_oauth_github_status",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github/repos": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [],
+        "summary": "List Repos",
+        "operationId": "get_oauth_github_repos",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github/repos/sync": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [],
+        "summary": "Create Sync",
+        "operationId": "post_oauth_github_repos_sync",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github/repos/selection": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-account-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "repoIds": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "summary": "Create Selection",
+        "operationId": "post_oauth_github_repos_selection",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    },
+    "/oauth/github/disconnect": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "license_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "org_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-org-id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [],
+        "summary": "Create Disconnect",
+        "operationId": "post_oauth_github_disconnect",
+        "tags": [
+          "GitHub OAuth"
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "OrgIdHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Org-Id",
+        "description": "Organization ID (UUID)."
+      },
+      "LicenseKeyHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-License-Key",
+        "description": "License key for the organization."
+      },
+      "AtlasSecretHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Atlas-Secret",
+        "description": "Atlas secret header (used by ingestion endpoints)."
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "AI",
+      "description": "AI-assisted endpoints, such as connector generation and helper utilities."
+    },
+    {
+      "name": "Agent Builder",
+      "description": "Build agent specifications and validate agent definitions."
+    },
+    {
+      "name": "Agent Config",
+      "description": "Read/update agent configuration and schema endpoints."
+    },
+    {
+      "name": "Agents",
+      "description": "Create, list, update, and inspect agents and their runtime state."
+    },
+    {
+      "name": "Auth (SAML)",
+      "description": "SAML authentication, SSO configuration, and metadata endpoints."
+    },
+    {
+      "name": "Automation Builder",
+      "description": "Draft, interpret, and manage automation builder sessions and messages."
+    },
+    {
+      "name": "Automations",
+      "description": "Create, list, update, and manage automations."
+    },
+    {
+      "name": "Branding",
+      "description": "Organization branding and UI customization settings."
+    },
+    {
+      "name": "Chat",
+      "description": "Chat endpoints, including streaming responses and history."
+    },
+    {
+      "name": "Commands",
+      "description": "Command console endpoints for running and managing commands."
+    },
+    {
+      "name": "Connectors",
+      "description": "Install, configure, test, and run connectors and integrations."
+    },
+    {
+      "name": "Deployment",
+      "description": "Deployment and environment status endpoints."
+    },
+    {
+      "name": "GitHub OAuth",
+      "description": "GitHub OAuth install/callback/refresh endpoints for GitHub integrations."
+    },
+    {
+      "name": "Ingestion",
+      "description": "Ingestion jobs, status, and ingestion search endpoints."
+    },
+    {
+      "name": "Insights",
+      "description": "Insights and overview endpoints."
+    },
+    {
+      "name": "Jira OAuth",
+      "description": "Jira OAuth install/callback/refresh/status endpoints."
+    },
+    {
+      "name": "License",
+      "description": "License validation, apply, refresh, and status endpoints."
+    },
+    {
+      "name": "Memory",
+      "description": "Memory graph, streams, and memory-related operations."
+    },
+    {
+      "name": "Meta Controller",
+      "description": "Approvals, events, and conversation graph endpoints."
+    },
+    {
+      "name": "Multi-Agent",
+      "description": "Multi-agent sessions, tool agents, memory, and streaming endpoints."
+    },
+    {
+      "name": "System",
+      "description": "System health and metrics endpoints."
+    },
+    {
+      "name": "Tasks",
+      "description": "Create, list, assign, and manage tasks."
+    },
+    {
+      "name": "Usage",
+      "description": "Usage analytics and reporting endpoints."
+    },
+    {
+      "name": "Workflows",
+      "description": "Compile, create, run, and manage workflows."
+    }
+  ]
+}
